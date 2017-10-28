@@ -3,6 +3,9 @@
 #pragma once
 #include<iostream>
 #include<string.h>
+#include<fstream>
+#include<stdlib.h> 
+#include <vector>
 
 using namespace std;
 
