@@ -58,9 +58,42 @@ int main()
 
 	}
 	file.close();
-	for (int i = 0;i < biblioteca.size();i++) {
-		cout <<endl<< "---------------------------------";
-		biblioteca.at(i).afisaretot();
+
+	cout << "Introduceti titlul cautat:";
+	cin >> temp;
+	temptitlu = new char[strlen(temp) + 1];
+	strcpy(temptitlu, temp);
+
+	cout << "Introduceti editura cautata:";
+	cin >> temp;
+	tempeditura = new char[strlen(temp) + 1];
+	strcpy(tempeditura, temp);
+
+	cout << "Introduceti isbnul cautat:";
+	cin >> temp;
+	tempisbn = new char[strlen(temp) + 1];
+	strcpy(tempisbn, temp);
+
+	for (int i = 0, sw;i < biblioteca.size();i++) {
+		sw = 0;
+
+		if (strcmp(biblioteca.at(i).Get_titlu(), temptitlu) == 0) {
+			cout << endl << "----------------------------------------------------";
+			biblioteca.at(i).afisaretot();
+			sw = 1;
+		}
+
+		if (strcmp(biblioteca.at(i).Get_editura(), tempeditura) == 0 && sw == 0) {
+			cout << endl << "----------------------------------------------------";
+			biblioteca.at(i).afisaretot();
+			sw = 1;
+		}
+
+		if (strcmp(biblioteca.at(i).Get_isbn(), tempisbn) == 0 && sw == 0) {
+			cout << endl << "----------------------------------------------------";
+			biblioteca.at(i).afisaretot();
+		}
+
 	}
 
 	return 0;
