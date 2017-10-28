@@ -4,20 +4,57 @@
 
 int main()
 {
-	char ed[] = "Editura Pedagogica", tl[] = "Harap alb si merele de aur", is[] = "RO-9654-TRR8-DSFD-54S5", an[] = "1996", pr[] = "20 lei";
-	struct structautori au;
-	au.n = 3;
-	au.autor = new lista_autori[au.n];
-	au.autor[0].nume = new char[8];
-	au.autor[1].nume = new char[8];
-	au.autor[2].nume = new char[11];
-	strcpy(au.autor[0].nume, "Spataru");
-	strcpy(au.autor[1].nume, "Creanga");
-	strcpy(au.autor[2].nume, "Castasescu");
+	structautori tempautori;
+	Carte *carte;
+	tempautori.n = 0;
+	vector<Carte> biblioteca;
+	char temp[100], c,*temptitlu,*tempeditura,*tempisbn,*tempanaparitie,*temppret;
+	int n_carti;
+	ifstream file;
+	file.open("in.txt");
+	tempautori.n = 0;
+	file.getline(temp, 100);
+	n_carti = atoi(temp);
+	for (int i = 0;i < n_carti;i++) {
 
-	Carte *carte1 = new Carte(tl,ed,au,is,an,pr);
-	Carte carte2(*carte1);
-	carte1->afisaretot();
-	delete carte1;
+		file.getline(temp, 100);
+		temptitlu = new char[strlen(temp) + 1];
+		strcpy(temptitlu, temp);
+
+		file.getline(temp, 100);
+		tempeditura = new char[strlen(temp) + 1];
+		strcpy(tempeditura, temp);
+
+		file.getline(temp, 100);
+		tempautori.n = atoi(temp);
+		tempautori.autor = new lista_autori[tempautori.n];
+		for (int j = 0;j < tempautori.n;j++) {
+			file.getline(temp, 100);
+			tempautori.autor[j].nume = new char[strlen(temp) + 1];
+			strcpy(tempautori.autor[j].nume, temp);
+		}
+
+		file.getline(temp, 100);
+		tempisbn= new char[strlen(temp) + 1];
+		strcpy(tempisbn, temp);
+
+		file.getline(temp, 100);
+		tempanaparitie = new char[strlen(temp) + 1];
+		strcpy(tempanaparitie, temp);
+
+		file.getline(temp, 100);
+		temppret = new char[strlen(temp) + 1];
+		strcpy(temppret, temp);
+
+		carte = new Carte(temptitlu,tempeditura,tempautori,tempisbn,tempanaparitie,temppret);
+		biblioteca.push_back(*carte);
+
+	}
+	file.close();
+	for (int i = 0;i < biblioteca.size();i++) {
+		cout <<endl<< "---------------------------------";
+		biblioteca.at(i).afisaretot();
+	}
+
 	return 0;
 }
