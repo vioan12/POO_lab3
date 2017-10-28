@@ -99,3 +99,18 @@ void Carte::afisaretot()
 	afisare_anaparitie();
 	afisare_pret();
 }
+
+char* Carte::Get_titlu()
+{
+	return this->titlu;
+}
+
+char* Carte::Get_editura()
+{
+	return this->editura;
+}
+
+char* Carte::Get_isbn()
+{
+	return this->isbn;
+}
