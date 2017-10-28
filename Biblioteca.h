@@ -31,10 +31,6 @@ public:
 	Carte(const Carte &);
 	~Carte();
 
-	//void cautare_titlu(const char valueoftitlu[]);
-	//void cautare_editura(const char valueofeditura[]);
-	//void cautare_isbn(const char valueofisbn[]);
-
 	void afisare_titlu();
 	void afisare_editura();
 	void afisare_autori();
@@ -42,4 +38,8 @@ public:
 	void afisare_anaparitie();
 	void afisare_pret();
 	void afisaretot();
+
+	char* Get_titlu();
+	char* Get_editura();
+	char* Get_isbn();
 };
