@@ -4,9 +4,16 @@
 #include<iostream>
 #include<string.h>
 
+using namespace std;
+
+struct lista_autori
+{
+	char *nume;
+};
+
 struct structautori
 {
-	char *autor;
+	lista_autori *autor;
 	int n;
 };
 
@@ -17,11 +24,13 @@ private:
 	structautori *autori;
 
 public:
-	Carte(char valueoftitlu[], char valueofeditura[], structautori valueofautori[], char valueofisbn[], char valueofanaparitie[], char valueofpret[]);
-	
-	void cautare_titlu(char valueoftitlu[]);
-	void cautare_editura(char valueofeditura[]);
-	void cautare_isbn(char valueofisbn[]);
+	Carte(const char [], const char [], const structautori , const char [], const char [], const char []);
+	Carte(const Carte &);
+	~Carte();
+
+	//void cautare_titlu(const char valueoftitlu[]);
+	//void cautare_editura(const char valueofeditura[]);
+	//void cautare_isbn(const char valueofisbn[]);
 
 	void afisare_titlu();
 	void afisare_editura();
@@ -29,4 +38,5 @@ public:
 	void afisare_isbn();
 	void afisare_anaparitie();
 	void afisare_pret();
+	void afisaretot();
 };
