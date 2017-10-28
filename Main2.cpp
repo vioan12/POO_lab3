@@ -49,6 +49,13 @@ int main()
 		carte = new Carte(temptitlu,tempeditura,tempautori,tempisbn,tempanaparitie,temppret);
 		biblioteca.push_back(*carte);
 
+		delete temptitlu;
+		delete tempeditura;
+		delete tempautori.autor;
+		delete tempisbn;
+		delete tempanaparitie;
+		delete temppret;
+
 	}
 	file.close();
 	for (int i = 0;i < biblioteca.size();i++) {
