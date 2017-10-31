@@ -5,7 +5,7 @@
 int main()
 {
 	structautori tempautori;
-	Carte *carte;
+	
 	tempautori.n = 0;
 	vector<Carte> biblioteca;
 	char temp[100], c,*temptitlu,*tempeditura,*tempisbn,*tempanaparitie,*temppret;
@@ -46,8 +46,8 @@ int main()
 		temppret = new char[strlen(temp) + 1];
 		strcpy(temppret, temp);
 
-		carte = new Carte(temptitlu,tempeditura,tempautori,tempisbn,tempanaparitie,temppret);
-		biblioteca.push_back(*carte);
+		Carte carte(temptitlu,tempeditura,tempautori,tempisbn,tempanaparitie,temppret);
+		biblioteca.push_back(carte);
 
 		delete temptitlu;
 		delete tempeditura;
@@ -55,6 +55,7 @@ int main()
 		delete tempisbn;
 		delete tempanaparitie;
 		delete temppret;
+		
 
 	}
 	file.close();
